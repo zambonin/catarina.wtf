@@ -1,4 +1,14 @@
 A "Worldle" [1] clone but only with cities from the state of Santa Catarina in
 Brazil. (A touch harder, I would say.)
 
+The shapefile containing the geographic information of the state was obtained
+from the Brazilian Institute of Geography and Statistics (IBGE). To convert
+a single shapefile into SVG files for each city, the Mapshaper [2] application
+was used via a custom Dockerfile and several other scripts, that can be found
+inside the `static/geo` directory.
+
+A live demo of the guessing game is available at [3].
+
 [1] https://worldle.teuteuf.fr/
+[2] https://github.com/mbloch/mapshaper/
+[3] https://zambonin.github.io/catarina.wtf
