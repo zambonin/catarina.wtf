@@ -10,8 +10,10 @@
   opacity: 1;
 }
 
-input[type=text], input[type=text]::placeholder {
-  color: #ccc;
+@media (prefers-color-scheme: dark) {
+  input[type=text], input[type=text]::placeholder {
+    color: #ccc;
+  }
 }
 
 .grid {
