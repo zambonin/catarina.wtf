@@ -1,6 +1,7 @@
 SHAPER = ./mapshaper
 OUTPUT_DIR = .
-RAW_DATA = $(OUTPUT_DIR)/SC_Municipios_2021.zip
+UF = SC
+RAW_DATA = $(OUTPUT_DIR)/$(UF)_Municipios_2021.zip
 SRC_SHP = $(RAW_DATA:.zip=.shp)
 SRC_DBF = $(RAW_DATA:.zip=.dbf)
 SRC_CSV = $(RAW_DATA:.zip=.csv)
@@ -37,11 +38,11 @@ split: $(SRC_SHP) $(SRC_DBF) $(SHAPER) /usr/bin/docker
 	touch $@
 
 $(SHAPER): /usr/bin/docker
-	docker build .
+	docker build . -t mapshaper:latest
 
 # https://ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/15774-malhas.html
 $(RAW_DATA): /usr/bin/curl
-	curl https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2021/UFs/SC/SC_Municipios_2021.zip -o $@
+	curl https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2021/UFs/$(UF)/$(UF)_Municipios_2021.zip -o $@
 
 clean:
 	@$(RM) $(SRC_SHP) $(SRC_DBF) $(SRC_CSV) $(SRC_JS) \
